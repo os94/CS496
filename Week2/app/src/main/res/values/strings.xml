@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Facemap</string>
+
+    <string name="no_permissions">This app requires the Microphone permission to run. Please click the button below to restart</string>
+    <string name="title_activity_no_map">Map</string>
+
+    <string name="facebook_app_id">282141445686903</string>
+    <string name="fb_login_protocol_scheme">fb282141445686903</string>
+
+</resources>
