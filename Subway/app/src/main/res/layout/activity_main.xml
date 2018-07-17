@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/btnBread"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:text = "Bread"
+        />
+
+    <Button
+        android:id="@+id/btnMain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:text="Main"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/btnCheese"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:text="Cheese"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/btnVege"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="55dp"
+        android:text="Vege"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/btnSauce"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/btnVege"
+        android:layout_centerHorizontal="true"
+        android:text="Sauce"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/btnExtra"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/btnVege"
+        android:text="Extra"
+        android:textStyle="bold" />
+
+
+    <ImageView
+        android:id="@+id/bottom"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="255dp"
+        android:src="@drawable/flat_bread_bottom"
+        android:visibility="invisible"/>
+
+    <ImageView
+        android:id="@+id/main2"
+        android:layout_width="160dp"
+        android:layout_height="36dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="243dp"
+        android:visibility="invisible" />
+
+    <ImageView
+        android:id="@+id/main"
+        android:layout_width="160dp"
+        android:layout_height="36dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="240dp"
+        android:visibility="invisible"/>
+
+
+    <ImageView
+        android:id="@+id/cheese"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="232dp"
+        android:src="@drawable/american_cheese"
+        android:visibility="invisible"/>
+
+    <ImageView
+        android:id="@+id/lettuce"
+        android:layout_width="160dp"
+        android:layout_height="26dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="235dp"
+        android:src="@drawable/lettuce"
+        android:visibility="invisible"/>
+
+    <ImageView
+        android:id="@+id/olive"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="235dp"
+        android:src="@drawable/olives"
+        android:visibility="invisible"/>
+
+    <ImageView
+        android:id="@+id/pepper"
+        android:layout_width="160dp"
+        android:layout_height="30dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="227dp"
+        android:src="@drawable/peppers"
+        android:visibility="invisible"/>
+
+    <ImageView
+        android:id="@+id/cucumber"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="225dp"
+        android:src="@drawable/cucumbers"
+        android:visibility="invisible"/>
+
+    <ImageView
+        android:id="@+id/jalapeno"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="215dp"
+        android:src="@drawable/jalapenos"
+        android:visibility="invisible"/>
+
+    <ImageView
+        android:id="@+id/pickle"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="220dp"
+        android:src="@drawable/pickle"
+        android:visibility="invisible"/>
+
+    <ImageView
+        android:id="@+id/tomato"
+        android:layout_width="160dp"
+        android:layout_height="28dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="215dp"
+        android:src="@drawable/tomato"
+        android:visibility="invisible"/>
+
+    <ImageView
+        android:id="@+id/onion"
+        android:layout_width="160dp"
+        android:layout_height="28dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="208dp"
+        android:src="@drawable/onion"
+        android:visibility="invisible"/>
+
+    <ImageView
+        android:id="@+id/top"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="200dp"
+        android:src="@drawable/flat_bread_top"
+        android:visibility="invisible"/>
+
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_above="@+id/navigationView"
+        android:layout_alignParentStart="true"
+        android:focusable="true"
+        android:hint="이름을 짓는다."
+        android:inputType="text|textMultiLine"
+        android:textCursorDrawable="@null">
+
+        <requestFocus />
+    </EditText>
+
+    <Button
+        android:id="@+id/btnCreate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/editText"
+        android:layout_toStartOf="@+id/btnCheese"
+        android:text="Create"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/btnSubmit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/editText"
+        android:text="Submit"
+        android:textStyle="bold" />
+
+
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/navigationView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:menu="@menu/navigation">
+
+        <include layout="@layout/navigation_element" />
+    </android.support.design.widget.BottomNavigationView>
+
+</RelativeLayout>
