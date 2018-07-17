@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="10dp"
+    tools:context=".RecipeActivity">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft= "180dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="0dp"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        android:text = "title"/>
+
+    <TextView
+        android:id="@+id/price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft= "180dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="50dp"
+        android:textSize="18dp"
+        android:text = "price"/>
+
+    <TextView
+        android:id="@+id/likeCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft= "260dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="50dp"
+        android:textSize="18dp"
+        android:textStyle="bold" android:text = "like"/>
+
+    <TextView
+        android:id="@+id/calorie"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft= "260dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="000dp"
+        android:textSize="18dp"
+        android:text = "calorie" />
+
+    <ImageView
+        android:id="@+id/bottom"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="55dp"
+        android:src="@drawable/flat_bread_bottom"
+        android:visibility="invisible"/>
+
+    <ImageView
+        android:id="@+id/main2"
+        android:layout_width="160dp"
+        android:layout_height="36dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="43dp"
+        android:visibility="invisible" />
+
+    <ImageView
+        android:id="@+id/main"
+        android:layout_width="160dp"
+        android:layout_height="36dp"
+        android:layout_alignParentTop="true"
+
+        android:layout_marginTop="40dp"
+        android:visibility="invisible"/>
+
+
+    <ImageView
+        android:id="@+id/cheese"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+
+        android:layout_marginTop="32dp"
+        android:src="@drawable/american_cheese"
+        android:visibility="invisible"/>
+
+    <ImageView
+        android:id="@+id/lettuce"
+        android:layout_width="160dp"
+        android:layout_height="26dp"
+        android:layout_alignParentTop="true"
+
+        android:layout_marginTop="35dp"
+        android:src="@drawable/lettuce"
+        android:visibility="invisible"/>
+
+    <ImageView
+        android:id="@+id/olive"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+
+        android:layout_marginTop="35dp"
+        android:src="@drawable/olives"
+        android:visibility="invisible"/>
+
+    <ImageView
+        android:id="@+id/pepper"
+        android:layout_width="160dp"
+        android:layout_height="30dp"
+        android:layout_alignParentTop="true"
+
+        android:layout_marginTop="27dp"
+        android:src="@drawable/peppers"
+        android:visibility="invisible"/>
+
+    <ImageView
+        android:id="@+id/cucumber"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+
+        android:layout_marginTop="25dp"
+        android:src="@drawable/cucumbers"
+        android:visibility="invisible"/>
+
+    <ImageView
+        android:id="@+id/jalapeno"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+
+        android:layout_marginTop="15dp"
+        android:src="@drawable/jalapenos"
+        android:visibility="invisible"/>
+
+    <ImageView
+        android:id="@+id/pickle"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+
+        android:layout_marginTop="20dp"
+        android:src="@drawable/pickle"
+        android:visibility="invisible"/>
+
+    <ImageView
+        android:id="@+id/tomato"
+        android:layout_width="160dp"
+        android:layout_height="28dp"
+        android:layout_alignParentTop="true"
+
+        android:layout_marginTop="15dp"
+        android:src="@drawable/tomato"
+        android:visibility="invisible"/>
+
+    <ImageView
+        android:id="@+id/onion"
+        android:layout_width="160dp"
+        android:layout_height="28dp"
+        android:layout_alignParentTop="true"
+
+        android:layout_marginTop="8dp"
+        android:src="@drawable/onion"
+        android:visibility="invisible"/>
+
+    <ImageView
+        android:id="@+id/top"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+
+        android:layout_marginTop="0dp"
+        android:src="@drawable/flat_bread_top"
+        android:visibility="invisible"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="27dp"
+        android:layout_marginTop="116dp"
+        android:text="Like" />
+
+</RelativeLayout>
