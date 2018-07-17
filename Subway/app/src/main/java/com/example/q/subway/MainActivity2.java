@@ -11,9 +11,13 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.concurrent.ExecutionException;
 
 public class MainActivity2 extends AppCompatActivity {
 
@@ -27,8 +31,31 @@ public class MainActivity2 extends AppCompatActivity {
         navigationView = (BottomNavigationView) findViewById(R.id.navigation);
         navigationView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
+
+
+        JSONObject jsonObject = new JSONObject();
+        JSONArray jsonArray = new JSONArray();
+        try {
+            jsonObject.put("u_id", LoadingActivity.global_uid);
+            jsonArray.put(jsonObject);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        NetworkTask networkTask = new NetworkTask("api/myrecipes", "post", null, jsonArray);
+        networkTask.execute();
+        String str = "";
+        try {
+            str = networkTask.get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+        //Toast.makeText(getApplicationContext(), str, Toast.LENGTH_SHORT).show();
+        //Log.d("netTask.get", str);
+
         ListView listView = findViewById(R.id.listview);
-        RecipeListAdapter adapter = new RecipeListAdapter(this, R.layout.list_item);
+        RecipeListAdapter adapter = new RecipeListAdapter(this, R.layout.list_item, str);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new ListView.OnItemClickListener() {
             @Override
@@ -36,11 +63,11 @@ public class MainActivity2 extends AppCompatActivity {
                 RecipeListAdapter.ViewHolder recipeHolder = (RecipeListAdapter.ViewHolder) view.getTag();
 
                 Intent intent = new Intent(view.getContext(), RecipeActivity.class);
-                intent.putExtra("recipe_id", recipeHolder.recipe_id);
+                intent.putExtra("recipe", recipeHolder.recipe);
+                intent.putExtra("position", recipeHolder.position);
                 startActivity(intent);
             }
         });
-
 
     }
 

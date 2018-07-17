@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import android.content.Context;
@@ -31,10 +32,12 @@ public class RecipeListAdapter extends BaseAdapter {
     int groupid;
     JSONArray recipeIdList;
     Context context;
+    String recipe;
 
-    public RecipeListAdapter(Context context, int vg){
+    public RecipeListAdapter(Context context, int vg, String recipe){
         this.context=context;
         groupid=vg;
+        this.recipe = recipe;
         //this.recipeIdList = recipeIdListList;
     }
     // Hold views of the ListView to improve its scrolling performance
@@ -43,7 +46,8 @@ public class RecipeListAdapter extends BaseAdapter {
         public TextView priceView;
         public TextView likeCountView;
         public TextView calorieView;
-        public String recipe_id;
+        public String recipe;
+        public int position;
     }
     public Object getItem(int position) {
         try {
@@ -58,7 +62,13 @@ public class RecipeListAdapter extends BaseAdapter {
         return position;
     }
     public int getCount() {
-        return 10;
+        try {
+            JSONArray jsonArray = new JSONArray(this.recipe);
+            return jsonArray.length();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return 0;
     }
 
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -73,15 +83,25 @@ public class RecipeListAdapter extends BaseAdapter {
             viewHolder.calorieView = rowView.findViewById(R.id.calorie);
             viewHolder.likeCountView =  rowView.findViewById(R.id.likeCount);
             viewHolder.priceView =  rowView.findViewById(R.id.price);
+            viewHolder.recipe = this.recipe;
+            viewHolder.position = position;
             rowView.setTag(viewHolder);
         }
         // Set text to each TextView of ListView item
+        try {
+            JSONArray jsonArray = new JSONArray(this.recipe);
+            JSONObject jsonObject = (JSONObject) jsonArray.get(position);
+            ViewHolder viewHolder = (ViewHolder) rowView.getTag();
 
-        ViewHolder viewHolder = (ViewHolder) rowView.getTag();
-        /*viewHolder.titleView.setText(viewHolder.name);
-        viewHolder.calorieView.setText(viewHolder.phoneNum);
-        viewHolder.likeView.setText(viewHolder.name);
-        viewHolder.priceView.setText(viewHolder.phoneNum);*/
+            viewHolder.titleView.setText(jsonObject.getString("title"));
+            viewHolder.calorieView.setText(jsonObject.getString("calorie"));
+            viewHolder.likeCountView.setText(jsonObject.getString("like"));
+            viewHolder.priceView.setText(jsonObject.getString("price"));
+            viewHolder.position = position;
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
         return rowView;
     }
 }

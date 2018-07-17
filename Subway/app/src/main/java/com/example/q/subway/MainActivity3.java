@@ -6,7 +6,16 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ListView;
 import android.widget.TextView;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.concurrent.ExecutionException;
 
 public class MainActivity3 extends AppCompatActivity {
 
@@ -19,6 +28,34 @@ public class MainActivity3 extends AppCompatActivity {
 
         navigationView = (BottomNavigationView) findViewById(R.id.navigation);
         navigationView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
+        NetworkTask networkTask = new NetworkTask("api/getAllRecipes", "get", null, null);
+        networkTask.execute();
+        String str = "";
+        try {
+            str = networkTask.get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+
+        ListView listView = findViewById(R.id.listview);
+        RecipeListAdapter adapter = new RecipeListAdapter(this, R.layout.list_item, str);
+        listView.setAdapter(adapter);
+        listView.setOnItemClickListener(new ListView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                RecipeListAdapter.ViewHolder recipeHolder = (RecipeListAdapter.ViewHolder) view.getTag();
+
+                Intent intent = new Intent(view.getContext(), RecipeActivity.class);
+                intent.putExtra("recipe", recipeHolder.recipe);
+                intent.putExtra("position", recipeHolder.position);
+                startActivity(intent);
+            }
+        });
+
+
     }
 
 
