@@ -1,14 +1,18 @@
 package com.example.q.subway;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -49,15 +53,16 @@ public class RecipeActivity extends AppCompatActivity {
         ImageView top ;
         ImageView bottom;
         ImageView cheese ;
-        TextView breadDiscription = findViewById(R.id.breadDiscription);
-        TextView mainDiscription = findViewById(R.id.mainDiscription);
-        TextView vegeDiscription = findViewById(R.id.vegeDiscription);
-        TextView cheeseDiscription = findViewById(R.id.cheeseDiscription);
-        TextView extraDiscription = findViewById(R.id.extraDiscription);
-        TextView sauceDiscription = findViewById(R.id.sauceDiscription);
+        final TextView breadDiscription = findViewById(R.id.breadDiscription);
+        final TextView mainDiscription = findViewById(R.id.mainDiscription);
+        final TextView vegeDiscription = findViewById(R.id.vegeDiscription);
+        final TextView cheeseDiscription = findViewById(R.id.cheeseDiscription);
+        final TextView extraDiscription = findViewById(R.id.extraDiscription);
+        final TextView sauceDiscription = findViewById(R.id.sauceDiscription);
+        final ListView replyList = findViewById(R.id.replyList);
 
         final String recipe;
-        final String recipe_id;
+//        final String recipe_id;
 
         // Inflate the list_item.xml file if convertView is null
 
@@ -74,6 +79,7 @@ public class RecipeActivity extends AppCompatActivity {
         top = findViewById(R.id.top);
         bottom = findViewById(R.id.bottom);
         cheese = findViewById(R.id.cheese);
+
 
         Intent intent  = getIntent();
         recipe = intent.getExtras().getString("recipe");
@@ -276,7 +282,102 @@ public class RecipeActivity extends AppCompatActivity {
         replyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                replyList.setVisibility(View.VISIBLE);
+                mainDiscription.setVisibility(View.INVISIBLE);
+                sauceDiscription.setVisibility(View.INVISIBLE);
+                vegeDiscription.setVisibility(View.INVISIBLE);
+                breadDiscription.setVisibility(View.INVISIBLE);
+                extraDiscription.setVisibility(View.INVISIBLE);
+                cheeseDiscription.setVisibility(View.INVISIBLE);
 
+
+                String str = "";
+                try {
+                    JSONArray jsonArray = new JSONArray(recipe);
+                    JSONObject jsonObject = (JSONObject) jsonArray.get(position);
+                    String recipe_id = jsonObject.getString("_id");
+                    JSONObject reply = new JSONObject();
+                    JSONArray replyArray = new JSONArray();
+                    reply.accumulate("recipe_id", recipe_id);
+                    replyArray.put(reply);
+                    NetworkTask networkTask = new NetworkTask("api/getreplies", "post", null, replyArray);
+                    networkTask.execute();
+                    str = networkTask.get();
+
+                    JSONArray allReplies = new JSONArray(str);
+                    ReplyListAdapter adapter = new ReplyListAdapter(v.getContext(), R.layout.reply_item, allReplies);
+                    ListView replyList = findViewById(R.id.replyList);
+                    replyList.setAdapter(adapter);
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } catch (ExecutionException e) {
+                    e.printStackTrace();
+                }
+
+
+            }
+        });
+
+        Button recipeButton = findViewById(R.id.recipeButton);
+        recipeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                replyList.setVisibility(View.INVISIBLE);
+                mainDiscription.setVisibility(View.VISIBLE);
+                sauceDiscription.setVisibility(View.VISIBLE);
+                vegeDiscription.setVisibility(View.VISIBLE);
+                breadDiscription.setVisibility(View.VISIBLE);
+                extraDiscription.setVisibility(View.VISIBLE);
+                cheeseDiscription.setVisibility(View.VISIBLE);
+            }
+        });
+
+        Button replyAdd = findViewById(R.id.replyWriteButton);
+        replyAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder alert = new AlertDialog.Builder(view.getContext());
+                alert.setTitle("당신의 의견 원한다.");
+
+                final EditText userInput = new EditText(view.getContext());
+                alert.setView(userInput);
+
+                alert.setNegativeButton("cancle",new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+
+                    }
+                });
+
+                alert.setPositiveButton("submit", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        String comment = userInput.getText().toString();
+
+                        JSONArray jsonArray = null;
+                        try {
+                            jsonArray = new JSONArray(recipe);
+                            JSONObject jsonObject = (JSONObject) jsonArray.get(position);
+                            String recipe_id = jsonObject.getString("_id");
+                            JSONObject reply = new JSONObject();
+                            JSONArray replyArray = new JSONArray();
+                            reply.accumulate("creator", global_uid);
+                            reply.accumulate("recipe_id", recipe_id);
+                            reply.accumulate("comment", comment);
+                            replyArray.put(reply);
+                            NetworkTask networkTask = new NetworkTask("api/replies", "post", null, replyArray);
+                            networkTask.execute();
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                });
+
+
+
+                alert.show();
             }
         });
 
