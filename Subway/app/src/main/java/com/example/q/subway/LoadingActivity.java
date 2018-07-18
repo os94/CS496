@@ -27,6 +27,7 @@ public class LoadingActivity extends AppCompatActivity {
     TextView tv_signup;
     EditText et_id, et_pw;
     Button btn_signin;
+    ImageView iv_potter;
     public static String global_uid;
 
     @Override
@@ -34,14 +35,14 @@ public class LoadingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loading);
 
-
+        iv_potter = (ImageView) findViewById(R.id.potter);
         tv_signup = (TextView) findViewById(R.id.tv_signup);
         et_id = (EditText) findViewById(R.id.et_id);
         et_pw = (EditText) findViewById(R.id.et_pw);
         btn_signin = (Button) findViewById(R.id.btn_signin);
 
-        // debugging Login route @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-        ImageView iv_title;
+        // debugging Login route @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+        /*ImageView iv_title;
         iv_title = (ImageView) findViewById(R.id.iv_title);
         iv_title.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,8 +50,15 @@ public class LoadingActivity extends AppCompatActivity {
                 Intent intent = new Intent(getBaseContext(), MainActivity.class);
                 startActivity(intent);
             }
+        }); */// @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+        iv_potter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getBaseContext(), HarryPotter.class);
+                startActivity(intent);
+            }
         });
-        // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
         tv_signup.setOnClickListener(new View.OnClickListener() {
             @Override

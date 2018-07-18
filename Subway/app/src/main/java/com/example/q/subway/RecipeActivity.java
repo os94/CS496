@@ -261,10 +261,14 @@ public class RecipeActivity extends AppCompatActivity {
                         jsonArray.put(jsonObject);
                         NetworkTask networkTask3 = new NetworkTask("api/postlike", "post", null, jsonArray);
                         networkTask3.execute();
-                        Toast.makeText(getApplicationContext(),"@@@ LIKE !! @@@",Toast.LENGTH_SHORT).show();
 
+                        Toast.makeText(getApplicationContext(),"★☆★☆★ 따봉 !!!! ★☆★☆★",Toast.LENGTH_SHORT).show();
+                        Intent intent_up = new Intent(getBaseContext(), ThumbsUp.class);
+                        startActivity(intent_up);
                     } else {
-                        Toast.makeText(getApplicationContext(),"You already LIKE !",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(),"그만 눌러ㅡㅡ",Toast.LENGTH_SHORT).show();
+                        Intent intent_up = new Intent(getBaseContext(), ThumbsUp.class);
+                        startActivity(intent_up);
                     }
                 } catch (InterruptedException e) {
                     e.printStackTrace();

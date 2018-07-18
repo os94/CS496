@@ -4,8 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="10dp"
-    android:padding="5dp"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:paddingTop="30dp"
     tools:context=".RecipeActivity">
 
 
@@ -14,45 +15,46 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_marginLeft= "180dp"
         android:layout_alignParentTop="true"
+        android:layout_marginLeft="180dp"
         android:layout_marginTop="0dp"
-        android:textSize="16dp"
-        android:textStyle="bold"
-        android:text = "title"/>
+        android:text="title"
+        android:textSize="20dp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_marginLeft= "180dp"
         android:layout_alignParentTop="true"
+        android:layout_marginLeft="180dp"
         android:layout_marginTop="50dp"
-        android:textSize="16dp"
-        android:text = "price"/>
+        android:text="price"
+        android:textSize="16dp" />
 
     <TextView
         android:id="@+id/likeCount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_marginLeft= "320dp"
         android:layout_alignParentTop="true"
+        android:layout_marginLeft="320dp"
         android:layout_marginTop="50dp"
+        android:text="like"
         android:textSize="16dp"
-        android:textStyle="bold" android:text = "like"/>
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/calorie"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_marginLeft= "240dp"
         android:layout_alignParentTop="true"
+        android:layout_marginLeft="240dp"
         android:layout_marginTop="50dp"
-        android:textSize="16dp"
-        android:text = "calorie" />
+        android:text="calorie"
+        android:textSize="16dp" />
 
 
     <ImageView
@@ -62,7 +64,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginTop="55dp"
         android:src="@drawable/flat_bread_bottom"
-        android:visibility="invisible"/>
+        android:visibility="invisible" />
 
     <ImageView
         android:id="@+id/main2"
@@ -79,7 +81,7 @@
         android:layout_alignParentTop="true"
 
         android:layout_marginTop="40dp"
-        android:visibility="invisible"/>
+        android:visibility="invisible" />
 
 
     <ImageView
@@ -90,7 +92,7 @@
 
         android:layout_marginTop="32dp"
         android:src="@drawable/american_cheese"
-        android:visibility="invisible"/>
+        android:visibility="invisible" />
 
     <ImageView
         android:id="@+id/lettuce"
@@ -100,7 +102,7 @@
 
         android:layout_marginTop="35dp"
         android:src="@drawable/lettuce"
-        android:visibility="invisible"/>
+        android:visibility="invisible" />
 
     <ImageView
         android:id="@+id/olive"
@@ -110,7 +112,7 @@
 
         android:layout_marginTop="35dp"
         android:src="@drawable/olives"
-        android:visibility="invisible"/>
+        android:visibility="invisible" />
 
     <ImageView
         android:id="@+id/pepper"
@@ -120,7 +122,7 @@
 
         android:layout_marginTop="27dp"
         android:src="@drawable/peppers"
-        android:visibility="invisible"/>
+        android:visibility="invisible" />
 
     <ImageView
         android:id="@+id/cucumber"
@@ -130,7 +132,7 @@
 
         android:layout_marginTop="25dp"
         android:src="@drawable/cucumbers"
-        android:visibility="invisible"/>
+        android:visibility="invisible" />
 
     <ImageView
         android:id="@+id/jalapeno"
@@ -140,7 +142,7 @@
 
         android:layout_marginTop="15dp"
         android:src="@drawable/jalapenos"
-        android:visibility="invisible"/>
+        android:visibility="invisible" />
 
     <ImageView
         android:id="@+id/pickle"
@@ -150,7 +152,7 @@
 
         android:layout_marginTop="20dp"
         android:src="@drawable/pickle"
-        android:visibility="invisible"/>
+        android:visibility="invisible" />
 
     <ImageView
         android:id="@+id/tomato"
@@ -160,7 +162,7 @@
 
         android:layout_marginTop="15dp"
         android:src="@drawable/tomato"
-        android:visibility="invisible"/>
+        android:visibility="invisible" />
 
     <ImageView
         android:id="@+id/onion"
@@ -170,7 +172,7 @@
 
         android:layout_marginTop="8dp"
         android:src="@drawable/onion"
-        android:visibility="invisible"/>
+        android:visibility="invisible" />
 
     <ImageView
         android:id="@+id/top"
@@ -180,7 +182,7 @@
 
         android:layout_marginTop="0dp"
         android:src="@drawable/flat_bread_top"
-        android:visibility="invisible"/>
+        android:visibility="invisible" />
 
     <Button
         android:id="@+id/likeButton"
@@ -190,7 +192,9 @@
         android:layout_alignParentTop="true"
         android:layout_marginEnd="0dp"
         android:layout_marginTop="116dp"
-        android:text="Like" />
+        android:backgroundTint="@color/green"
+        android:text="Like"
+        android:textColor="@color/lightyel" />
 
     <Button
         android:id="@+id/replyButton"
@@ -200,7 +204,9 @@
         android:layout_alignParentTop="true"
         android:layout_marginEnd="100dp"
         android:layout_marginTop="116dp"
-        android:text="Reply" />
+        android:backgroundTint="@color/green"
+        android:text="Reply"
+        android:textColor="#FFFFFF" />
 
     <Button
         android:id="@+id/recipeButton"
@@ -210,7 +216,9 @@
         android:layout_alignParentTop="true"
         android:layout_marginEnd="200dp"
         android:layout_marginTop="116dp"
-        android:text="Recipe" />
+        android:backgroundTint="@color/green"
+        android:text="Recipe"
+        android:textColor="#FFFFFF" />
 
     <Button
         android:id="@+id/replyWriteButton"
@@ -219,8 +227,10 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
         android:layout_marginEnd="27dp"
-        android:layout_marginTop="430dp"
-        android:text="Add Reply" />
+        android:layout_marginTop="450dp"
+        android:backgroundTint="@color/green"
+        android:text="Add Reply"
+        android:textColor="#FFFFFF" />
 
     <TextView
         android:id="@+id/breadDiscription"
@@ -229,7 +239,9 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginTop="200dp"
-        android:text="TextView" />
+        android:paddingLeft="20dp"
+        android:text="TextView"
+        android:textSize="16dp" />
 
     <TextView
         android:id="@+id/mainDiscription"
@@ -237,7 +249,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_marginTop="240dp"
-        android:text="TextView" />
+        android:paddingLeft="20dp"
+        android:text="TextView"
+        android:textSize="16dp" />
 
     <TextView
         android:id="@+id/cheeseDiscription"
@@ -245,7 +259,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_marginTop="280dp"
-        android:text="TextView" />
+        android:paddingLeft="20dp"
+        android:text="TextView"
+        android:textSize="16dp" />
 
     <TextView
         android:id="@+id/vegeDiscription"
@@ -253,7 +269,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_marginTop="320dp"
-        android:text="TextView" />
+        android:paddingLeft="20dp"
+        android:text="TextView"
+        android:textSize="16dp" />
 
     <TextView
         android:id="@+id/sauceDiscription"
@@ -262,7 +280,9 @@
         android:layout_alignParentTop="true"
 
         android:layout_marginTop="360dp"
-        android:text="TextView" />
+        android:paddingLeft="20dp"
+        android:text="TextView"
+        android:textSize="16dp" />
 
     <TextView
         android:id="@+id/extraDiscription"
@@ -272,7 +292,9 @@
 
         android:layout_alignParentTop="true"
         android:layout_marginTop="400dp"
-        android:text="TextView" />
+        android:paddingLeft="20dp"
+        android:text="TextView"
+        android:textSize="16dp" />
 
     <ListView
         android:id="@+id/replyList"
@@ -283,7 +305,7 @@
         android:layout_below="@id/navigationView"
         android:layout_marginTop="168dp"
         android:choiceMode="singleChoice"
-        android:visibility="invisible"/>
+        android:visibility="invisible" />
 
 
 </RelativeLayout>

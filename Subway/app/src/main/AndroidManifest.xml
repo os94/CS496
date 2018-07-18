@@ -28,7 +28,11 @@
         <activity
             android:name=".ReplyActivity"
             android:label="@string/title_activity_reply"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ThumbsUp"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name=".HarryPotter"></activity>
     </application>
 
 </manifest>

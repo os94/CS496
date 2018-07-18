@@ -3,6 +3,8 @@ package com.example.q.subway;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources;
+import android.media.AudioManager;
+import android.media.SoundPool;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -39,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
 
         /*Intent intent = getIntent();
         final String uid = intent.getExtras().getString("userID");*/
-        Toast.makeText(getApplicationContext(), LoadingActivity.global_uid, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getApplicationContext(), LoadingActivity.global_uid, Toast.LENGTH_SHORT).show();
 
         //All ingredients
         final String[] breadItems = new String[]{"Honey Oat", "Hearty Italian", "Wheat", "Parmesan Oregano", "White", "Flat Bread"};
@@ -384,6 +386,18 @@ public class MainActivity extends AppCompatActivity {
         btnCreate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                final SoundPool sound = new SoundPool(1, AudioManager.STREAM_ALARM, 0);// maxStreams, streamType, srcQuality
+                final int soundId = sound.load(getApplicationContext(), R.raw.ring, 1);
+                int streamId = sound.play(soundId, 1.0F, 1.0F,  0,  0,  1.0F);
+                //sound.stop(streamId);
+                sound.setOnLoadCompleteListener(new SoundPool.OnLoadCompleteListener() {
+                    @Override
+                    public void onLoadComplete(SoundPool soundPool, int sampleId, int status) {
+                        sound.play(soundId, 1.0F, 1.0F,  0,  0,  1.0F);
+                    }
+                });
+
                 price = 0;
                 calorie = 0;
                 switch(selectedMain.get(0)) {
