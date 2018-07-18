@@ -6,19 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.TextView;
-
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-
-import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.BaseAdapter;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -27,15 +14,14 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
-public class RecipeListAdapter extends BaseAdapter {
+public class ReplyListAdapter  extends BaseAdapter {
     int groupid;
     JSONArray recipeIdList;
     Context context;
     String recipe;
 
-    public RecipeListAdapter(Context context, int vg, String recipe){
+    public ReplyListAdapter(Context context, int vg, String recipe){
         this.context=context;
         groupid=vg;
         this.recipe = recipe;
@@ -68,9 +54,9 @@ public class RecipeListAdapter extends BaseAdapter {
                 JSONArray jsonArray = new JSONArray(this.recipe);
                 return jsonArray.length();
             }
-             catch(JSONException e) {
-                 e.printStackTrace();
-             }
+            catch(JSONException e) {
+                e.printStackTrace();
+            }
         }
         return 0;
     }
@@ -79,47 +65,47 @@ public class RecipeListAdapter extends BaseAdapter {
 
         View rowView = convertView;
         ImageView lettuce ;
-       ImageView tomato ;
+        ImageView tomato ;
         ImageView pepper;
         ImageView olive ;
-         ImageView pickle ;
-         ImageView jalapeno ;
-         ImageView onion;
-         ImageView cucumber;
-         ImageView main ;
-         ImageView main2 ;
+        ImageView pickle ;
+        ImageView jalapeno ;
+        ImageView onion;
+        ImageView cucumber;
+        ImageView main ;
+        ImageView main2 ;
         ImageView top ;
-         ImageView bottom;
-         ImageView cheese ;
+        ImageView bottom;
+        ImageView cheese ;
 
         // Inflate the list_item.xml file if convertView is null
         //if(rowView==null){
 
 
-            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            rowView= inflater.inflate(groupid, parent, false);
+        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        rowView= inflater.inflate(groupid, parent, false);
 
-            ViewHolder viewHolder = new ViewHolder();
-            viewHolder.titleView = rowView.findViewById(R.id.title);
-            viewHolder.calorieView = rowView.findViewById(R.id.calorie);
-            viewHolder.likeCountView =  rowView.findViewById(R.id.likeCount);
-            viewHolder.priceView =  rowView.findViewById(R.id.price);
-            viewHolder.recipe = this.recipe;
-            rowView.setTag(viewHolder);
+        ViewHolder viewHolder = new ViewHolder();
+        viewHolder.titleView = rowView.findViewById(R.id.title);
+        viewHolder.calorieView = rowView.findViewById(R.id.calorie);
+        viewHolder.likeCountView =  rowView.findViewById(R.id.likeCount);
+        viewHolder.priceView =  rowView.findViewById(R.id.price);
+        viewHolder.recipe = this.recipe;
+        rowView.setTag(viewHolder);
 
-            lettuce = rowView.findViewById(R.id.lettuce);
-            tomato = rowView.findViewById(R.id.tomato);
-            pepper = rowView.findViewById(R.id.pepper);
-            olive = rowView.findViewById(R.id.olive);
-            pickle =rowView. findViewById(R.id.pickle);
-            jalapeno = rowView.findViewById(R.id.jalapeno);
-            onion = rowView.findViewById(R.id.onion);
-            cucumber = rowView.findViewById(R.id.cucumber);
-            main = rowView.findViewById(R.id.main);
-            main2 = rowView.findViewById(R.id.main2);
-            top = rowView.findViewById(R.id.top);
-            bottom = rowView.findViewById(R.id.bottom);
-            cheese = rowView.findViewById(R.id.cheese);
+        lettuce = rowView.findViewById(R.id.lettuce);
+        tomato = rowView.findViewById(R.id.tomato);
+        pepper = rowView.findViewById(R.id.pepper);
+        olive = rowView.findViewById(R.id.olive);
+        pickle =rowView. findViewById(R.id.pickle);
+        jalapeno = rowView.findViewById(R.id.jalapeno);
+        onion = rowView.findViewById(R.id.onion);
+        cucumber = rowView.findViewById(R.id.cucumber);
+        main = rowView.findViewById(R.id.main);
+        main2 = rowView.findViewById(R.id.main2);
+        top = rowView.findViewById(R.id.top);
+        bottom = rowView.findViewById(R.id.bottom);
+        cheese = rowView.findViewById(R.id.cheese);
         //}
         // Set text to each TextView of ListView item
         try {

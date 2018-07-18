@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingTop="10dp"
+    android:padding="5dp"
     tools:context=".RecipeActivity">
 
 
@@ -16,7 +17,7 @@
         android:layout_marginLeft= "180dp"
         android:layout_alignParentTop="true"
         android:layout_marginTop="0dp"
-        android:textSize="18dp"
+        android:textSize="16dp"
         android:textStyle="bold"
         android:text = "title"/>
 
@@ -28,7 +29,7 @@
         android:layout_marginLeft= "180dp"
         android:layout_alignParentTop="true"
         android:layout_marginTop="50dp"
-        android:textSize="18dp"
+        android:textSize="16dp"
         android:text = "price"/>
 
     <TextView
@@ -39,7 +40,7 @@
         android:layout_marginLeft= "320dp"
         android:layout_alignParentTop="true"
         android:layout_marginTop="50dp"
-        android:textSize="18dp"
+        android:textSize="16dp"
         android:textStyle="bold" android:text = "like"/>
 
     <TextView
@@ -50,7 +51,7 @@
         android:layout_marginLeft= "240dp"
         android:layout_alignParentTop="true"
         android:layout_marginTop="50dp"
-        android:textSize="18dp"
+        android:textSize="16dp"
         android:text = "calorie" />
 
 
@@ -187,8 +188,101 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
-        android:layout_marginEnd="27dp"
+        android:layout_marginEnd="0dp"
         android:layout_marginTop="116dp"
         android:text="Like" />
+
+    <Button
+        android:id="@+id/replyButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="100dp"
+        android:layout_marginTop="116dp"
+        android:text="Reply" />
+
+    <Button
+        android:id="@+id/recipeButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="200dp"
+        android:layout_marginTop="116dp"
+        android:text="Recipe" />
+
+    <Button
+        android:id="@+id/replyWriteButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="27dp"
+        android:layout_marginTop="430dp"
+        android:text="Add Reply" />
+
+    <TextView
+        android:id="@+id/breadDiscription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="200dp"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/mainDiscription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="240dp"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/cheeseDiscription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="280dp"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/vegeDiscription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="320dp"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/sauceDiscription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+
+        android:layout_marginTop="360dp"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/extraDiscription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="400dp"
+        android:text="TextView" />
+
+    <ListView
+        android:id="@+id/replyList"
+        android:layout_width="match_parent"
+        android:layout_height="310dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_below="@id/navigationView"
+        android:layout_marginTop="168dp"
+        android:choiceMode="singleChoice" />
+
 
 </RelativeLayout>

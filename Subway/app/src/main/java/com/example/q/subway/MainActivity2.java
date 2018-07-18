@@ -51,8 +51,6 @@ public class MainActivity2 extends AppCompatActivity {
         } catch (ExecutionException e) {
             e.printStackTrace();
         }
-        //Toast.makeText(getApplicationContext(), str, Toast.LENGTH_SHORT).show();
-        //Log.d("netTask.get", str);
 
         ListView listView = findViewById(R.id.listview);
         RecipeListAdapter adapter = new RecipeListAdapter(this, R.layout.list_item, str);

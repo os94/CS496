@@ -21,7 +21,7 @@ import java.net.URL;
 
 public class NetworkTask extends AsyncTask<Void, Void, String> {
 
-    private String url = "http://52.231.68.122:8080/",routes,method;
+    private String url = "http://52.231.66.176:8080/",routes,method;
     private ContentValues values;
     private JSONArray jsonarray;
 

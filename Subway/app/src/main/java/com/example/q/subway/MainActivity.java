@@ -536,7 +536,8 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
 
-                Toast.makeText(v.getContext(), "가격: "+ price + "원, 열량: "+calorie+"kcal", Toast.LENGTH_SHORT).show();
+                TextView summary = findViewById(R.id.summary);
+                summary.setText( price +"원, "+ calorie+"kcal");
             }
         });
 

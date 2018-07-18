@@ -24,7 +24,11 @@
             </intent-filter>
         </activity>
         <activity android:name=".Signup" />
-        <activity android:name=".RecipeActivity"></activity>
+        <activity android:name=".RecipeActivity" />
+        <activity
+            android:name=".ReplyActivity"
+            android:label="@string/title_activity_reply"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
