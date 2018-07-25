@@ -102,7 +102,7 @@ if(isset($_SESSION["shopping_cart"]))
 else  
 {  
   echo '<script>alert("Item Already Added")</script>';  
-  echo '<script>window.location="index2.php"</script>';  
+  echo '<script>window.location="cart.php"</script>';  
 }  
 }  
 else  
@@ -127,7 +127,7 @@ if(isset($_GET["action"]))
     {  
      unset($_SESSION["shopping_cart"][$keys]);  
      echo '<script>alert("Item Removed")</script>';  
-     echo '<script>window.location="index2.php"</script>';  
+     echo '<script>window.location="cart.php"</script>';  
    }  
  }  
 }  
@@ -224,56 +224,64 @@ h3{
  <div class="container" style="width:auto;">  
   <div class="text">
     <h2 align="center"> Take Home some</h2>
-    <h1 align="center" onclick="location.href='../gdvbs.html'" style="cursor: pointer;"> GOODVIBES</h1></div>
-    <h3 align="center" id="part">Be part of our movement.</h3> <br> 
-    <div class="table-responsive">  
-      <h2 id="order">Order Details</h2>
-      <table class="table table-bordered" id="pricetag">  
-        <tr>  
-         <th width="40%">Item Name</th>  
-         <th width="10%">Quantity</th>  
-         <th width="20%">Price</th>  
-         <th width="15%">Total</th>  
-         <th width="5%">Action</th>  
-       </tr>  
-       <?php   
-       if(!empty($_SESSION["shopping_cart"]))  
+    <h1 align="center" style="cursor: pointer;" onclick="location.href='../gdvbs.html'"> GOODVIBES</h1>
+  </div>
+  <h3 align="center" id="part">Be part of our movement.</h3> <br> 
+  <div class="table-responsive">  
+    <h2 id="order">Order Details</h2>
+    <table class="table table-bordered" id="pricetag">  
+      <tr>  
+       <th width="40%">Item Name</th>  
+       <th width="10%">Quantity</th>  
+       <th width="20%">Price</th>  
+       <th width="15%">Total</th>  
+       <th width="5%">Action</th>  
+     </tr>  
+     <?php   
+     if(!empty($_SESSION["shopping_cart"]))  
+     {  
+       $total = 0;  
+       foreach($_SESSION["shopping_cart"] as $keys => $values)  
        {  
-         $total = 0;  
-         foreach($_SESSION["shopping_cart"] as $keys => $values)  
-         {  
-          ?>  
-          <tr>  
-           <td><?php echo $values["item_name"]; ?></td>  
-           <td><?php echo $values["item_quantity"]; ?></td>  
-           <td>$ <?php echo $values["item_price"]; ?></td>  
-           <td>$ <?php echo number_format($values["item_quantity"] * $values["item_price"], 2); ?></td>  
-           <td><a href="index2.php?action=delete&id=<?php echo $values["item_id"]; ?>"><span class="text-danger">Remove</span></a></td>  
+        ?>  
+        <tr>  
+         <td><?php echo $values["item_name"]; ?></td>  
+         <td><?php echo $values["item_quantity"]; ?></td>  
+         <td>$ <?php echo $values["item_price"]; ?></td>  
+         <td>$ <?php echo number_format($values["item_quantity"] * $values["item_price"], 2); ?></td>  
+         <td><a href="cart.php?action=delete&id=<?php echo $values["item_id"]; ?>"><span class="text-danger">Remove</span></a></td>  
 
-         </tr>  
-         <?php  
-         $total = $total + ($values["item_quantity"] * $values["item_price"]);  
-       }  
-       ?>  
-       <tr>  
-         <td colspan="3" align="right">Total</td>  
-         <td align="right">$ <?php echo number_format($total, 2); ?></td>  
-         <td bgcolor="#A00000" onclick="confirm()"><span style="font-weight:bold; color:#ffffff;">CHECKOUT</span></td>  
-         <script>function confirm(){alert("Proceed to CHECKOUT! #GOODVIBEZ");} </script>
        </tr>  
        <?php  
+       $total = $total + ($values["item_quantity"] * $values["item_price"]);  
      }  
      ?>  
-   </table>  
- </div>  
- <script>function onClick(element) {
-   document.getElementById("img01").src = element.src;
-   document.getElementById("modal01").style.display = "block";
-   var captionText = document.getElementById("caption");
-   captionText.innerHTML = element.alt;
- }</script>
 
- <div id="modal01" class="w3-modal w3-black" onclick="this.style.display='none'">
+     <tr>  
+       <td colspan="3" align="right">Total</td>  
+       <td align="right">$ <?php echo number_format($total, 2); ?></td>  
+       <td bgcolor="#A00000" onclick="confirm()"><a href=""><span style="font-weight:bold; color:#ffffff;">CHECKOUT</span></a></td>  
+       <script type="text/javascript">
+        function confirm(){
+          $.get("../mail/mail.php");
+          alert("Proceed to CHECKOUT! #GOODVIBEZ");
+        }  </script>
+
+      </tr>  
+
+      <?php  
+    }  
+    ?>  
+  </table>  
+</div>  
+<script>function onClick(element) {
+ document.getElementById("img01").src = element.src;
+ document.getElementById("modal01").style.display = "block";
+ var captionText = document.getElementById("caption");
+ captionText.innerHTML = element.alt;
+}</script>
+
+<div id="modal01" class="w3-modal w3-black" onclick="this.style.display='none'">
   <span class="w3-button w3-xxlarge w3-black w3-padding-large w3-display-topright" title="Close Modal Image">X</span>
   <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
     <img id="img01" class="w3-image">
@@ -291,7 +299,7 @@ if(mysqli_num_rows($result) > 0)
  {  
   ?>  
   <div class="col-md-4" id="gallery">  
-   <form method="post" action="index2.php?action=add&id=<?php echo $row["id"]; ?>">  
+   <form method="post" action="cart.php?action=add&id=<?php echo $row["id"]; ?>">  
     <div style="border:#ffffff; background-color:#ffffff; border-radius:5px; padding:16px;" align="center">  
      <img src="<?php echo $row["image"]; ?>" class="img" id="img01" onclick="onClick(this)"/><br />  
      <h4 class="text-info"><?php echo $row["name"]; ?></h4>  
