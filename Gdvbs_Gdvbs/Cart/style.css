@@ -8,7 +8,7 @@ body {
 #container { 
     width: 700px; 
     margin: 150px auto; 
-    background-color: #eee; 
+    background-color: #fff; 
     overflow: hidden; /* Set overflow: hidden to clear the floats on #main and #sidebar */
     padding: 15px; 
 } 
