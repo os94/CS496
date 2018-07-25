@@ -22,7 +22,7 @@ if($id==NULL || $pw==NULL || $name==NULL || $email==NULL)
 	exit();
 }
 
-$conn = new mysqli("localhost", "root", "apmsetup", "test");
+$conn = new mysqli("localhost", "root", "apmsetup", "gdvbs");
 if($conn->connect_error){
 	die("connection failed: " . $conn->connect_error);
 }
