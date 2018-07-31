@@ -141,7 +141,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    // onActivityResult로 intent의 결과값을 처리하고, data.getData로 방금찍은 사진URI를 가져온다
+    // onActivityResult로 intent의 결과값을 처리하고, data.getData로 사진URI를 가져온다
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
