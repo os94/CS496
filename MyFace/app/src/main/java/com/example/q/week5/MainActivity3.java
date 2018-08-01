@@ -20,6 +20,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
@@ -34,13 +36,14 @@ import java.io.PrintWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
 public class MainActivity3 extends AppCompatActivity implements View.OnClickListener {
 
     BottomNavigationView navigationView;
     private Button btn1, btn2;
-    private TextView tv, tv2;
+    private TextView tv, tv2, tv3;
     private ImageView iv, iv2;
     private static final int CAMERA_CODE = 1111;
     private static final int GALLERY_CODE = 1112;
@@ -57,6 +60,8 @@ public class MainActivity3 extends AppCompatActivity implements View.OnClickList
         btn2 = (Button) findViewById(R.id.btn_gallery);
         tv = (TextView) findViewById(R.id.tv_age);
         tv2 = (TextView) findViewById(R.id.tv_detail);
+        tv3 = (TextView) findViewById(R.id.tv_detail2);
+
         iv = (ImageView) findViewById(R.id.iv);
         iv2 = (ImageView) findViewById(R.id.iv_first);
 
@@ -89,6 +94,7 @@ public class MainActivity3 extends AppCompatActivity implements View.OnClickList
                 case CAMERA_CODE :
                     tv.setText(null);
                     tv2.setText("앨범에서 사진을 선택하세요.");
+                    tv3.setText(null);
                     iv.setVisibility(View.GONE);
                     iv2.setVisibility(View.VISIBLE);
                     Toast.makeText(this, "사진을 선택하세요 !", Toast.LENGTH_SHORT).show();
@@ -110,17 +116,17 @@ public class MainActivity3 extends AppCompatActivity implements View.OnClickList
                         if(CFRJSON == null) {
                             tv.setText("얼굴나이 측정실패");
                             tv2.setText("사람 얼굴이 아닙니다.");
+                            tv3.setText("? ? ?");
                             new MainActivity3.LoadImgTask().execute("https://pbs.twimg.com/profile_images/476169263305457665/I8QlqUVh.jpeg");
                         } else {
                             //iv.setImageURI(data.getData());
+                            int age = getAgeFromJson(CFRJSON);
+                            ArrayList<String> imgLink = getImgLinkFromAge(age);
 
-                            /*String age = getAgeFromJson(CFRJSON);
-                            String imgLink = getImgLinkFromAge(age);*/
-                            String testImgLink = "https://pinkfrogpetproducts.com/wp-content/uploads/2014/03/img.gif";
-
-                            tv.setText("test age"); //age 들어갈것
-                            tv2.setText("당신의 얼굴 나이 !!");
-                            new MainActivity3.LoadImgTask().execute(testImgLink);
+                            tv.setText(age+"세"); //age 들어갈것
+                            tv2.setText("당신의 얼굴 나이 !!\n\n");
+                            tv3.setText(imgLink.get(1));
+                            new MainActivity3.LoadImgTask().execute(imgLink.get(0));
                         }
                     } catch (InterruptedException e) {
                         e.printStackTrace();
@@ -132,6 +138,59 @@ public class MainActivity3 extends AppCompatActivity implements View.OnClickList
                     break;
             }
         }
+    }
+
+    public ArrayList<String> getImgLinkFromAge(int age) {
+        ArrayList<String> link = new ArrayList<>();
+        if (age<10) {
+            link.add("http://upload2.inven.co.kr/upload/2017/10/15/bbs/i15991102354.jpg");
+            link.add("철부지 꼬마입니다 :D");
+        }
+        else if (age<20) { //~10대
+            link.add("http://img.insight.co.kr/static/2017/11/13/700/uf3lcb2thol2xlhk4jme.jpg");
+            link.add("급식입니다.");
+        }
+        else if (age<30) { //20대
+            link.add("http://img.insight.co.kr/static/2018/01/02/700/6na6dk2048mv9s6799j9.jpg");
+            link.add("20대 청춘입니다 ^^");
+        }
+        else if (age<40) { //30대
+            link.add("https://pbs.twimg.com/media/CrJ_UI0UAAMcdN5.jpg");
+            link.add("30대 직장인입니다 T.T");
+        }
+        else if (age<60) { //40~50대
+            link.add("http://img.hani.co.kr/imgdb/resize/2012/0626/00435015401_20120626.JPG");
+            link.add("꽃중년입니다 ㅎㅎ");
+        }
+        else { //60~대
+            link.add("http://ojsfile.ohmynews.com/STD_IMG_FILE/2018/0627/IE002355708_STD.jpg");
+            link.add("지천명");
+        }
+        return link;
+    }
+
+    public static int getAgeFromJson(JSONObject jsonObject) {
+        try {
+            JSONArray faceArray = (JSONArray) jsonObject.get("faces");
+            JSONObject faceObject = (JSONObject) faceArray.getJSONObject(0);
+            JSONObject ageObject = (JSONObject) faceObject.get("age");
+            String valueStr = (String) ageObject.get("value");
+            // @@@@@ JSON string CHECK @@@@@
+            Log.d("@@@@@ faceArray: ", faceArray.toString());
+            Log.d("@@@@@ faceObject: ", faceObject.toString());
+            Log.d("@@@@@ celeObject: ", ageObject.toString());
+            Log.d("@@@@@ valueStr: ", valueStr.toString());
+
+            String []ages = valueStr.split("~");
+            int age1 = Integer.parseInt(ages[0].toString());
+            int age2 = Integer.parseInt(ages[1].toString());
+            int age = (age1+age2)/2;
+            Log.d("@@@@@ age", String.valueOf(age));
+            return age;
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return 0;
     }
 
     public static String getRealPathFromUri(Context context, Uri contentUri) {
