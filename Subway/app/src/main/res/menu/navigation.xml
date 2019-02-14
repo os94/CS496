@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_simulator"
+        android:icon="@drawable/ic_simulator_24dp"
+        android:title="@string/title_simulator" />
+
+    <item
+        android:id="@+id/navigation_mySubway"
+        android:icon="@drawable/ic_mysubway_24dp"
+        android:title="@string/title_mySubway" />
+
+    <item
+        android:id="@+id/navigation_top100"
+        android:icon="@drawable/ic_top100_24dp"
+        android:title="@string/title_top100" />
+
+</menu>

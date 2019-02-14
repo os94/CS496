@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Subway</string>
+    <string name="title_simulator">Simulator</string>
+    <string name="title_mySubway">My Subway</string>
+    <string name="title_top100">Top 100</string>
+    <string name="title_activity_reply">ReplyActivity</string>
+</resources>
