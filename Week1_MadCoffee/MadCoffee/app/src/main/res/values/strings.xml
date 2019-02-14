@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">MAD COFFEE</string>
+    <string name="no_permissions">This app requires the Microphone permission to run. Please click the button below to restart</string>
+
+</resources>
